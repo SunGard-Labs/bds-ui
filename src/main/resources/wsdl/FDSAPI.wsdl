@@ -1,0 +1,2947 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="http://FDSAPI.api.fds.biscom.com/types" xmlns:ns1="http://type.api.fds.biscom.com/xsd" xmlns:ns="http://FDSAPI.api.fds.biscom.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://FDSAPI.api.fds.biscom.com/types" xmlns:stn_22="http://util.java/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://FDSAPI.api.fds.biscom.com">
+    <wsdl:documentation>FDSAPI</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:types="http://FDSAPI.api.fds.biscom.com/types" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://FDSAPI.api.fds.biscom.com/types">
+            <xs:import namespace="http://type.api.fds.biscom.com/xsd"/>
+            <xs:import namespace="http://util.java/xsd"/>
+            <xs:element name="signIn" type="ns1:XSSignInInput"/>
+            <xs:element name="signInResponse" type="ns1:XSSignInOutput"/>
+            <xs:element name="signOut" type="ns1:XSSignOutInput"/>
+            <xs:element name="signOutResponse" type="ns1:XSSignOutOutput"/>
+            <xs:element name="getUserRoles" type="ns1:XSGetUserRolesInput"/>
+            <xs:element name="getUserRolesResponse" type="ns1:XSGetUserRolesOutput"/>
+            <xs:element name="getUserRolesV2" type="ns1:XSGetUserRolesInputV2"/>
+            <xs:element name="getUserRolesResponseV2" type="ns1:XSGetUserRolesOutputV2"/>
+            <xs:element name="getPackage" type="ns1:XSGetPackageInput"/>
+            <xs:element name="getPackageResponse" type="ns1:XSGetPackageOutput"/>
+            <xs:element name="addPackage" type="ns1:XSAddPackageInput"/>
+            <xs:element name="addPackageResponse" type="ns1:XSAddPackageOutput"/>
+            <xs:element name="editPackage" type="ns1:XSEditPackageInput"/>
+            <xs:element name="editPackageResponse" type="ns1:XSEditPackageOutput"/>
+            <xs:element name="deletePackage" type="ns1:XSDeletePackageInput"/>
+            <xs:element name="deletePackageResponse" type="ns1:XSDeletePackageOutput"/>
+            <xs:element name="getPackageVersion" type="ns1:XSGetPackageVersionInput"/>
+            <xs:element name="getPackageVersionResponse" type="ns1:XSGetPackageVersionOutput"/>
+            <xs:element name="addPackageVersion" type="ns1:XSAddPackageVersionInput"/>
+            <xs:element name="addPackageVersionResponse" type="ns1:XSAddPackageVersionOutput"/>
+            <xs:element name="editPackageVersion" type="ns1:XSEditPackageVersionInput"/>
+            <xs:element name="editPackageVersionResponse" type="ns1:XSEditPackageVersionOutput"/>
+            <xs:element name="getDocument" type="ns1:XSGetDocumentInput"/>
+            <xs:element name="getDocumentResponse" type="ns1:XSGetDocumentOutput"/>
+            <xs:element name="editDocument" type="ns1:XSEditDocumentInput"/>
+            <xs:element name="editDocumentResponse" type="ns1:XSEditDocumentOutput"/>
+            <xs:element name="deleteDocument" type="ns1:XSDeleteDocumentInput"/>
+            <xs:element name="deleteDocumentResponse" type="ns1:XSDeleteDocumentOutput"/>
+            <xs:element name="getDocuments" type="ns1:XSGetDocumentsInput"/>
+            <xs:element name="getDocumentsResponse" type="ns1:XSGetDocumentsOutput"/>
+            <xs:element name="getDirectory" type="ns1:XSGetDirectoryInput"/>
+            <xs:element name="getDirectoryResponse" type="ns1:XSGetDirectoryOutput"/>
+            <xs:element name="addDirectory" type="ns1:XSAddDirectoryInput"/>
+            <xs:element name="addDirectoryResponse" type="ns1:XSAddDirectoryOutput"/>
+            <xs:element name="getUserPackages" type="ns1:XSGetUserPackagesInput"/>
+            <xs:element name="getUserPackagesResponse" type="ns1:XSGetUserPackagesOutput"/>
+            <xs:element name="getOwners" type="ns1:XSGetOwnersInput"/>
+            <xs:element name="getOwnersResponse" type="ns1:XSGetOwnersOutput"/>
+            <xs:element name="getPackageOwners" type="ns1:XSGetPackageOwnersInput"/>
+            <xs:element name="getPackageOwnersResponse" type="ns1:XSGetPackageOwnersOutput"/>
+            <xs:element name="getSenders" type="ns1:XSGetSendersInput"/>
+            <xs:element name="getSendersResponse" type="ns1:XSGetSendersOutput"/>
+            <xs:element name="getPackageSenders" type="ns1:XSGetPackageSendersInput"/>
+            <xs:element name="getPackageSendersResponse" type="ns1:XSGetPackageSendersOutput"/>
+            <xs:element name="getDeliveryRecipients" type="ns1:XSGetDeliveryRecipientsInput"/>
+            <xs:element name="getDeliveryRecipientsResponse" type="ns1:XSGetDeliveryRecipientsOutput"/>
+            <xs:element name="getUserDeliveries" type="ns1:XSGetUserDeliveriesInput"/>
+            <xs:element name="getUserDeliveriesResponse" type="ns1:XSGetUserDeliveriesOutput"/>
+            <xs:element name="getDeliveryTransactions" type="ns1:XSGetDeliveryTransactionsInput"/>
+            <xs:element name="getDeliveryTransactionsResponse" type="ns1:XSGetDeliveryTransactionsOutput"/>
+            <xs:element name="sendDeliveryNotifications" type="ns1:XSSendDeliveryNotificationsInput"/>
+            <xs:element name="sendDeliveryNotificationsResponse" type="ns1:XSSendDeliveryNotificationsOutput"/>
+            <xs:element name="getContact" type="ns1:XSGetContactInput"/>
+            <xs:element name="getContactResponse" type="ns1:XSGetContactOutput"/>
+            <xs:element name="addContact" type="ns1:XSAddContactInput"/>
+            <xs:element name="addContactResponse" type="ns1:XSAddContactOutput"/>
+            <xs:element name="getDataFile" type="ns1:XSGetDataFileInput"/>
+            <xs:element name="getDataFileResponse" type="ns1:XSGetDataFileOutput"/>
+            <xs:element name="addPackageDocuments" type="ns1:XSAddPackageDocumentsInput"/>
+            <xs:element name="addPackageDocumentsResponse" type="ns1:XSAddPackageDocumentsOutput"/>
+            <xs:element name="initiateDataFileUpload" type="ns1:XSInitiateDataFileUploadInput"/>
+            <xs:element name="initiateDataFileUploadResponse" type="ns1:XSInitiateDataFileUploadOutput"/>
+            <xs:element name="completeDataFileUpload" type="ns1:XSCompleteDataFileUploadInput"/>
+            <xs:element name="completeDataFileUploadResponse" type="ns1:XSCompleteDataFileUploadOutput"/>
+            <xs:element name="getDelivery" type="ns1:XSGetDeliveryInput"/>
+            <xs:element name="getDeliveryResponse" type="ns1:XSGetDeliveryOutput"/>
+            <xs:element name="addDelivery" type="ns1:XSAddDeliveryInput"/>
+            <xs:element name="addDeliveryResponse" type="ns1:XSAddDeliveryOutput"/>
+            <xs:element name="editDelivery" type="ns1:XSEditDeliveryInput"/>
+            <xs:element name="editDeliveryResponse" type="ns1:XSEditDeliveryOutput"/>
+            <xs:element name="deleteDelivery" type="ns1:XSDeleteDeliveryInput"/>
+            <xs:element name="deleteDeliveryResponse" type="ns1:XSDeleteDeliveryOutput"/>
+            <xs:element name="editContact" type="ns1:XSEditContactInput"/>
+            <xs:element name="editContactResponse" type="ns1:XSEditContactOutput"/>
+            <xs:element name="deleteContact" type="ns1:XSDeleteContactInput"/>
+            <xs:element name="deleteContactResponse" type="ns1:XSDeleteContactOutput"/>
+            <xs:element name="getInitProperties" type="ns1:XSGetInitPropertiesInput"/>
+            <xs:element name="getInitPropertiesResponse" type="ns1:XSGetInitPropertiesOutput"/>
+            <xs:element name="addExpressDelivery" type="ns1:XSAddExpressDeliveryInput"/>
+            <xs:element name="addExpressDeliveryResponse" type="ns1:XSAddExpressDeliveryOutput"/>
+            <xs:element name="getNewTrackingNumber" type="ns1:XSGetNewTrackingNumberInput"/>
+            <xs:element name="getNewTrackingNumberResponse" type="ns1:XSGetNewTrackingNumberOutput"/>
+            <xs:element name="getPackageDeliveries" type="ns1:XSGetPackageDeliveriesInput"/>
+            <xs:element name="getPackageDeliveriesResponse" type="ns1:XSGetPackageDeliveriesOutput"/>
+            <xs:element name="getAddressList" type="ns1:XSGetAddressListInput"/>
+            <xs:element name="getAddressListResponse" type="ns1:XSGetAddressListOutput"/>
+            <xs:element name="registerUser" type="ns1:XSRegisterUserInput"/>
+            <xs:element name="registerUserResponse" type="ns1:XSRegisterUserOutput"/>
+            <xs:element name="deleteUser" type="ns1:XSDeleteUserInput"/>
+            <xs:element name="deleteUserResponse" type="ns1:XSDeleteUserOutput"/>
+            <xs:element name="resetUserPassword" type="ns1:XSResetUserPasswordInput"/>
+            <xs:element name="resetUserPasswordResponse" type="ns1:XSResetUserPasswordOutput"/>
+            <xs:element name="editUser" type="ns1:XSEditUserInput"/>
+            <xs:element name="editUserResponse" type="ns1:XSEditUserOutput"/>
+            <xs:element name="checkAvailableQuota" type="ns1:XSCheckAvailableQuotaInput"/>
+            <xs:element name="checkAvailableQuotaResponse" type="ns1:XSCheckAvailableQuotaOutput"/>
+            <xs:element name="iwsc" type="ns1:XSInternalWebServiceCommandInput"/>
+            <xs:element name="iwscResponse" type="ns1:XSInternalWebServiceCommandOutput"/>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://type.api.fds.biscom.com/xsd">
+            <xs:import namespace="http://util.java/xsd"/>
+            <xs:complexType name="XSSignInInput">
+                <xs:sequence>
+                    <xs:element name="username" nillable="true" type="xs:string"/>
+                    <xs:element name="authenticationMethod" nillable="true" type="xs:string"/>
+                    <xs:element name="base64PasswordHash" nillable="true" type="xs:string"/>
+                    <xs:element name="domainName" nillable="true" type="xs:string"/>
+                    <xs:element name="authenticationKey" nillable="true" type="xs:string"/>
+                    <xs:element name="password" nillable="true" type="xs:string"/>
+                    <xs:element name="encodingScheme" nillable="true" type="xs:string"/>
+                    <xs:element name="channelType" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSignInOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="userVO" nillable="true" type="ns1:XSUserVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSUserVO">
+                <xs:sequence>
+                    <xs:element name="username" nillable="true" type="xs:string"/>
+                    <xs:element name="authenticationMethod" nillable="true" type="xs:string"/>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="emailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="firstName" nillable="true" type="xs:string"/>
+                    <xs:element name="middleName" nillable="true" type="xs:string"/>
+                    <xs:element name="lastName" nillable="true" type="xs:string"/>
+                    <xs:element name="createdBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateCreated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastUpdatedBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateLastUpdated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="signupCompletedDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastSignInDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="company" nillable="true" type="xs:string"/>
+                    <xs:element name="addressLine1" nillable="true" type="xs:string"/>
+                    <xs:element name="addressLine2" nillable="true" type="xs:string"/>
+                    <xs:element name="city" nillable="true" type="xs:string"/>
+                    <xs:element name="zipCode" nillable="true" type="xs:string"/>
+                    <xs:element name="workPhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="homePhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="mobilePhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="otherPhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="faxNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="secretQuestions" nillable="true" type="xs:anyType"/>
+                    <xs:element name="signInLocked" nillable="true" type="xs:boolean"/>
+                    <xs:element name="signInFailureCount" nillable="true" type="xs:int"/>
+                    <xs:element name="signInTotalFailureCount" nillable="true" type="xs:int"/>
+                    <xs:element name="signInLastFailureDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="resetPasswordFailureCount" nillable="true" type="xs:int"/>
+                    <xs:element name="resetPasswordTotalFailureCount" nillable="true" type="xs:int"/>
+                    <xs:element name="resetPasswordLastFailureDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="recipientInclusionList" nillable="true" type="xs:string"/>
+                    <xs:element name="recipientExclusionList" nillable="true" type="xs:string"/>
+                    <xs:element name="allowSMTPInput" nillable="true" type="xs:boolean"/>
+                    <xs:element name="inactive" nillable="true" type="xs:boolean"/>
+                    <xs:element name="lastPasswordResetDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="passwordExpires" nillable="true" type="xs:boolean"/>
+                    <xs:element name="forcePasswordReset" nillable="true" type="xs:boolean"/>
+                    <xs:element name="state" nillable="true" type="xs:string"/>
+                    <xs:element name="country" nillable="true" type="xs:string"/>
+                    <xs:element name="displayName" nillable="true" type="xs:string"/>
+                    <xs:element name="active" nillable="true" type="xs:boolean"/>
+                    <xs:element name="title" nillable="true" type="xs:string"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSecretQuestions">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="secretQuestion" nillable="true" type="ns1:XSSecretQuestionVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSecretQuestionVO">
+                <xs:sequence>
+                    <xs:element name="questionId" nillable="true" type="xs:int"/>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="questionCode" nillable="true" type="xs:string"/>
+                    <xs:element name="question" nillable="true" type="xs:string"/>
+                    <xs:element name="answer" nillable="true" type="xs:string"/>
+                    <xs:element name="answerHint" nillable="true" type="xs:string"/>
+                    <xs:element name="createdBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateCreated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastUpdatedBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateLastUpdated" nillable="true" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSignOutInput">
+                <xs:sequence>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSignOutOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetUserRolesInput">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetUserRolesOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="userRolesVO" nillable="true" type="ns1:XSUserRolesVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSUserRolesVO">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="roles" nillable="true" type="ns1:XSRoles"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSRoles">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="role" nillable="true" type="ns1:XSRole"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="XSRole">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="ADMIN"/>
+                    <xs:enumeration value="RECIPIENT"/>
+                    <xs:enumeration value="SENDER"/>
+                    <xs:enumeration value="REPORT"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="XSGetUserRolesInputV2">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetUserRolesOutputV2">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="userRolesVOV2" nillable="true" type="ns1:XSUserRolesVOV2"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSUserRolesVOV2">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="roles" nillable="true" type="ns1:XSRolesV2"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSRolesV2">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="role" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="accessRole" nillable="true" type="ns1:XSRole"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="extPackageVO" nillable="true" type="ns1:XSExtPackageVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSPackageVO">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="folderId" nillable="true" type="xs:int"/>
+                    <xs:element name="latestVersion" nillable="true" type="xs:int"/>
+                    <xs:element name="latestPublishedVersion" nillable="true" type="xs:int"/>
+                    <xs:element name="createdBy" nillable="true" type="xs:int"/>
+                    <xs:element name="autoDelDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="autoDelReminderDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="autoDelReminderSentDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="dateCreated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastUpdatedBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateLastUpdated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastActivityDate" nillable="true" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSExtPackageVO">
+                <xs:sequence>
+                    <xs:element name="packageVO" nillable="true" type="ns1:XSPackageVO"/>
+                    <xs:element name="requesterIsOwner" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddPackageInput">
+                <xs:sequence>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="newPackageVO" nillable="true" type="ns1:XSNewPackageVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewPackageVO">
+                <xs:sequence>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="label" nillable="true" type="xs:string"/>
+                    <xs:element name="folderId" nillable="true" type="xs:int"/>
+                    <xs:element name="autoDelDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="autoDelReminderDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="ownerEmails" nillable="true" type="ns1:XSEmailList"/>
+                    <xs:element name="senderEmails" nillable="true" type="ns1:XSEmailList"/>
+                    <xs:element name="newDocumentVOs" nillable="true" type="ns1:XSNewDocumentVOList"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEmailList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="emailEntryList" nillable="true" type="ns1:XSEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEmails">
+                <xs:sequence>
+                    <xs:element name="emails" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddPackageOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="extPackageVO" nillable="true" type="ns1:XSExtPackageVO"/>
+                    <xs:element name="nonUserEmails" nillable="true" type="ns1:XSNonUserEmails"/>
+                    <xs:element name="inactiveUsers" nillable="true" type="ns1:XSInactiveUsers"/>
+                    <xs:element name="nonSenders" nillable="true" type="ns1:XSNonSenders"/>
+                    <xs:element name="invalidEmails" nillable="true" type="ns1:XSInvalidEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNonUserEmails">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="nonUserEmail" nillable="true" type="ns1:XSEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSInactiveUsers">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="inactiveUser" nillable="true" type="ns1:XSUserVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNonSenders">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="nonSender" nillable="true" type="ns1:XSUserVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSInvalidEmails">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="invalidEmail" nillable="true" type="ns1:XSEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditPackageInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="newPropValues" nillable="true" type="ns1:XSEditPropValues"/>
+                    <xs:element name="publishAfterEdit" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditPropValues">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="newPropValue" nillable="true" type="ns1:XSEditPropValue"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditPropValue">
+                <xs:sequence>
+                    <xs:element name="key" nillable="true" type="xs:string"/>
+                    <xs:element name="value" nillable="true" type="xs:string"/>
+                    <xs:element name="newDocumentVOs" nillable="true" type="ns1:XSNewDocumentVOList"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditPackageOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="extPackageVO" nillable="true" type="ns1:XSExtPackageVO"/>
+                    <xs:element name="nonUserEmails" nillable="true" type="ns1:XSNonUserEmails"/>
+                    <xs:element name="inactiveUsers" nillable="true" type="ns1:XSInactiveUsers"/>
+                    <xs:element name="nonSenders" nillable="true" type="ns1:XSNonSenders"/>
+                    <xs:element name="invalidEmails" nillable="true" type="ns1:XSInvalidEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeletePackageInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeletePackageOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageVersionInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="version" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageVersionOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="packageVersionVO" nillable="true" type="ns1:XSPackageVersionVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSPackageVersionVO">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="version" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="label" nillable="true" type="xs:string"/>
+                    <xs:element name="rootDirectoryId" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddPackageVersionInput">
+                <xs:sequence>
+                    <xs:element name="newPackageVersionVO" nillable="true" type="ns1:XSNewPackageVersionVO"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewPackageVersionVO">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="label" nillable="true" type="xs:string"/>
+                    <xs:element name="rootDirectoryId" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddPackageVersionOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="packageVersionVO" nillable="true" type="ns1:XSPackageVersionVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditPackageVersionInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="version" nillable="true" type="xs:int"/>
+                    <xs:element name="newPropValues" nillable="true" type="ns1:XSPackageVersionEditPropValues"/>
+                    <xs:element name="publishAfterEdit" nillable="true" type="xs:boolean"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSPackageVersionEditPropValues">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="newPropValue" nillable="true" type="ns1:XSEditPropValue"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditPackageVersionOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="packageVersionVO" nillable="true" type="ns1:XSPackageVersionVO"/>
+                    <xs:element name="nonUserEmails" nillable="true" type="ns1:XSNonUserEmails"/>
+                    <xs:element name="inactiveUsers" nillable="true" type="ns1:XSInactiveUsers"/>
+                    <xs:element name="nonSenders" nillable="true" type="ns1:XSNonSenders"/>
+                    <xs:element name="invalidEmails" nillable="true" type="ns1:XSInvalidEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetUserPackagesInput">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="includeDeletedItems" nillable="true" type="xs:boolean"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetUserPackagesOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" name="extPackageVOList" nillable="true" type="ns1:XSExtPackageVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDocumentInput">
+                <xs:sequence>
+                    <xs:element name="documentId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDocumentOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="documentVO" nillable="true" type="ns1:XSDocumentVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDocumentVO">
+                <xs:sequence>
+                    <xs:element name="documentId" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="size" nillable="true" type="xs:long"/>
+                    <xs:element name="directoryId" nillable="true" type="xs:int"/>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                    <xs:element name="createdBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateCreated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastUpdatedBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateLastUpdated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="displayOrder" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditDocumentInput">
+                <xs:sequence>
+                    <xs:element name="documentId" nillable="true" type="xs:int"/>
+                    <xs:element name="newPropValues" nillable="true" type="ns1:XSDocumentEditPropValues"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDocumentEditPropValues">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="newPropValue" nillable="true" type="ns1:XSEditPropValue"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditDocumentOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="documentVO" nillable="true" type="ns1:XSDocumentVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteDocumentInput">
+                <xs:sequence>
+                    <xs:element name="documentId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteDocumentOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDocumentsInput">
+                <xs:sequence>
+                    <xs:element name="directoryId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDocumentsOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="documentVOs" nillable="true" type="ns1:XSDocumentVOList"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDocumentVOList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="documentVO" nillable="true" type="ns1:XSDocumentVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDirectoryInput">
+                <xs:sequence>
+                    <xs:element name="directoryId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDirectoryOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="directoryVO" nillable="true" type="ns1:XSDirectoryVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDirectoryVO">
+                <xs:sequence>
+                    <xs:element name="directoryId" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="parentDirectoryId" nillable="true" type="xs:int"/>
+                    <xs:element name="rootDirectoryId" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddDirectoryInput">
+                <xs:sequence>
+                    <xs:element name="newDirectoryVO" nillable="true" type="ns1:XSNewDirectoryVO"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewDirectoryVO">
+                <xs:sequence>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="parentDirectoryId" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddDirectoryOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="directoryVO" nillable="true" type="ns1:XSDirectoryVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetOwnersInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetOwnersOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" name="owners" nillable="true" type="ns1:XSUserVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageOwnersInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="retrieveRows" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveTotalRowCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageOwnersOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" name="addressListComposite" nillable="true" type="ns1:XSAddressListComposite"/>
+                    <xs:element name="totalRowCount" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetSendersInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetSendersOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" name="senders" nillable="true" type="ns1:XSUserVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageSendersInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="retrieveRows" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveTotalRowCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageSendersOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" name="addressListComposite" nillable="true" type="ns1:XSAddressListComposite"/>
+                    <xs:element name="totalRowCount" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSRange">
+                <xs:sequence>
+                    <xs:element name="dataType" nillable="true" type="ns1:XSDataType"/>
+                    <xs:element name="startValue" nillable="true" type="xs:string"/>
+                    <xs:element name="endValue" nillable="true" type="xs:string"/>
+                    <xs:element name="includeStartValue" nillable="true" type="xs:boolean"/>
+                    <xs:element name="includeEndValue" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="XSDataType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="DATE"/>
+                    <xs:enumeration value="LONG"/>
+                    <xs:enumeration value="INT"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="XSSortOrder">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="ASCENDING"/>
+                    <xs:enumeration value="DESCENDING"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="XSExtRecipientVO">
+                <xs:sequence>
+                    <xs:element name="recipientVO" nillable="true" type="ns1:XSRecipientVO"/>
+                    <xs:element name="numViewedTimes" nillable="true" type="xs:int"/>
+                    <xs:element name="extDocumentVOList" nillable="true" type="ns1:XSExtDocumentVOList"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSRecipientVO">
+                <xs:sequence>
+                    <xs:element name="userVO" nillable="true" type="ns1:XSUserVO"/>
+                    <xs:element name="dateDeleted" nillable="true" type="xs:dateTime"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSExtDocumentVOList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="extDocumentVO" nillable="true" type="ns1:XSExtDocumentVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSExtDocumentVO">
+                <xs:sequence>
+                    <xs:element name="documentVO" nillable="true" type="ns1:XSDocumentVO"/>
+                    <xs:element name="numDownloadedTimesByRecipient" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDeliveryRecipientsInput">
+                <xs:sequence>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="includeDeletedUsers" nillable="true" type="xs:boolean"/>
+                    <xs:element name="includeViewedTimes" nillable="true" type="xs:boolean"/>
+                    <xs:element name="includeDownloadedTimes" nillable="true" type="xs:boolean"/>
+                    <xs:element name="searchFilter" nillable="true" type="ns1:XSSearchFilter"/>
+                    <xs:element name="sortVO" nillable="true" type="ns1:XSSortVO"/>
+                    <xs:element name="range" nillable="true" type="ns1:XSRange"/>
+                    <xs:element name="retrieveRows" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveTotalRowCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDeliveryRecipientsOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="DeliveryRecipients" nillable="true" type="ns1:XSDeliveryRecipients"/>
+                    <xs:element name="totalRowCount" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeliveryRecipients">
+                <xs:sequence>
+                    <xs:element name="toAddressListEntries" nillable="true" type="ns1:XSAddressListEntries"/>
+                    <xs:element name="ccAddressListEntries" nillable="true" type="ns1:XSAddressListEntries"/>
+                    <xs:element name="bccAddressListEntries" nillable="true" type="ns1:XSAddressListEntries"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddressListEntries">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="addressListComposite" nillable="true" type="ns1:XSAddressListComposite"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetUserDeliveriesInput">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="includeDeletedItems" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveUnreadReplyCount" nillable="true" type="xs:boolean"/>
+                    <xs:element name="gdri" nillable="true" type="ns1:XSGetDeliveryRecipientsInput"/>
+                    <xs:element name="deliveryType" nillable="true" type="ns1:XSDeliveryType"/>
+                    <xs:element name="searchFilter" nillable="true" type="ns1:XSSearchFilter"/>
+                    <xs:element name="sortVO" nillable="true" type="ns1:XSSortVO"/>
+                    <xs:element name="range" nillable="true" type="ns1:XSRange"/>
+                    <xs:element name="retrieveRows" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveTotalRowCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSearchFilter">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="searchAttributes" nillable="true" type="xs:string"/>
+                    <xs:element name="matchType" nillable="true" type="xs:string"/>
+                    <xs:element name="wordMatchType" nillable="true" type="xs:string"/>
+                    <xs:element name="caseSensitive" nillable="true" type="xs:boolean"/>
+                    <xs:element name="searchString" nillable="true" type="xs:string"/>
+                    <xs:element name="attributeRelation" nillable="true" type="xs:string"/>
+                    <xs:element name="searchNumber" nillable="true" type="xs:boolean"/>
+                    <xs:element name="markType" nillable="true" type="xs:int"/>
+                    <xs:element name="topicId" nillable="true" type="xs:int"/>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="searchFilterType" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSortVO">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="sortItems" nillable="true" type="ns1:XSSortItem"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSortItem">
+                <xs:sequence>
+                    <xs:element name="sortAttribute" nillable="true" type="xs:string"/>
+                    <xs:element name="sortOrder" nillable="true" type="ns1:XSSortOrder"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="XSDeliveryType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="RECEIVED"/>
+                    <xs:enumeration value="OWNED"/>
+                    <xs:enumeration value="SENT"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="XSGetUserDeliveriesOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="extDeliveryVOs" nillable="true" type="ns1:XSExtDeliveryVOs"/>
+                    <xs:element name="totalRowCount" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSExtDeliveryVOs">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="extDeliveryVO" nillable="true" type="ns1:XSExtDeliveryVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSExtDeliveryVO">
+                <xs:sequence>
+                    <xs:element name="deliveryVO" nillable="true" type="ns1:XSDeliveryVO"/>
+                    <xs:element name="packageName" nillable="true" type="xs:string"/>
+                    <xs:element name="senderEmailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="senderFirstName" nillable="true" type="xs:string"/>
+                    <xs:element name="senderLastName" nillable="true" type="xs:string"/>
+                    <xs:element name="senderStatus" nillable="true" type="xs:string"/>
+                    <xs:element name="getDeliveryRecipientsOutput" nillable="true" type="ns1:XSGetDeliveryRecipientsOutput"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageDeliveriesInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="searchFilter" nillable="true" type="ns1:XSSearchFilter"/>
+                    <xs:element name="sortVO" nillable="true" type="ns1:XSSortVO"/>
+                    <xs:element name="range" nillable="true" type="ns1:XSRange"/>
+                    <xs:element name="retrieveRows" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveTotalRowCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetPackageDeliveriesOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" name="deliveryVOs" nillable="true" type="ns1:XSDeliveryVO"/>
+                    <xs:element name="totalRowCount" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDeliveryTransactionsInput">
+                <xs:sequence>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="transactionLevel" nillable="true" type="xs:int"/>
+                    <xs:element name="trackRequest" nillable="true" type="xs:boolean"/>
+                    <xs:element name="searchFilter" nillable="true" type="ns1:XSSearchFilter"/>
+                    <xs:element name="sortVO" nillable="true" type="ns1:XSSortVO"/>
+                    <xs:element name="range" nillable="true" type="ns1:XSRange"/>
+                    <xs:element name="retrieveRows" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveTotalRowCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDeliveryTransactionsOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="totalRowCount" nillable="true" type="xs:int"/>
+                    <xs:element name="transactionVOs" nillable="true" type="ns1:XSTransactionVOs"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSTransactionVOs">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="transactionVO" nillable="true" type="ns1:XSTransactionVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSTransactionVO">
+                <xs:sequence>
+                    <xs:element name="transactionId" nillable="true" type="xs:int"/>
+                    <xs:element name="transactionDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="level" nillable="true" type="xs:int"/>
+                    <xs:element name="type" nillable="true" type="xs:string"/>
+                    <xs:element name="category" nillable="true" type="xs:string"/>
+                    <xs:element name="target" nillable="true" type="xs:string"/>
+                    <xs:element name="action" nillable="true" type="xs:string"/>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="parentTransactionId" nillable="true" type="xs:int"/>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="version" nillable="true" type="xs:int"/>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="documentId" nillable="true" type="xs:int"/>
+                    <xs:element name="documentName" nillable="true" type="xs:string"/>
+                    <xs:element name="targetUserId" nillable="true" type="xs:int"/>
+                    <xs:element name="logEntry" nillable="true" type="xs:string"/>
+                    <xs:element name="oldValue" nillable="true" type="xs:string"/>
+                    <xs:element name="newValue" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSendDeliveryNotificationsInput">
+                <xs:sequence>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSSendDeliveryNotificationsOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetContactInput">
+                <xs:sequence>
+                    <xs:element name="contactId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetContactOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="contactVO" nillable="true" type="ns1:XSContactVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSContactVO">
+                <xs:sequence>
+                    <xs:element name="contactId" nillable="true" type="xs:int"/>
+                    <xs:element name="contactOwnerId" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="createdBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateCreated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastUpdatedBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateLastUpdated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="firstName" nillable="true" type="xs:string"/>
+                    <xs:element name="middleName" nillable="true" type="xs:string"/>
+                    <xs:element name="lastName" nillable="true" type="xs:string"/>
+                    <xs:element name="nickname" nillable="true" type="xs:string"/>
+                    <xs:element name="combinedName" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddressAlt1" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddressAlt2" nillable="true" type="xs:string"/>
+                    <xs:element name="category" nillable="true" type="xs:string"/>
+                    <xs:element name="homeAddressLine1" nillable="true" type="xs:string"/>
+                    <xs:element name="homeAddressLine2" nillable="true" type="xs:string"/>
+                    <xs:element name="homeCity" nillable="true" type="xs:string"/>
+                    <xs:element name="homeState" nillable="true" type="xs:string"/>
+                    <xs:element name="homeZipCode" nillable="true" type="xs:string"/>
+                    <xs:element name="homeCountry" nillable="true" type="xs:string"/>
+                    <xs:element name="jobTitle" nillable="true" type="xs:string"/>
+                    <xs:element name="company" nillable="true" type="xs:string"/>
+                    <xs:element name="workWebsite" nillable="true" type="xs:string"/>
+                    <xs:element name="workAddressLine1" nillable="true" type="xs:string"/>
+                    <xs:element name="workAddressLine2" nillable="true" type="xs:string"/>
+                    <xs:element name="workCity" nillable="true" type="xs:string"/>
+                    <xs:element name="workState" nillable="true" type="xs:string"/>
+                    <xs:element name="workZipCode" nillable="true" type="xs:string"/>
+                    <xs:element name="workCountry" nillable="true" type="xs:string"/>
+                    <xs:element name="workPhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="homePhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="mobilePhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="otherPhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="faxNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="pagerNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="personalWebsite" nillable="true" type="xs:string"/>
+                    <xs:element name="birthday" nillable="true" type="xs:string"/>
+                    <xs:element name="notes" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddContactInput">
+                <xs:sequence>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="newContactVO" nillable="true" type="ns1:XSNewContactVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddContactOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="contactVO" nillable="true" type="ns1:XSContactVO"/>
+                    <xs:element name="invalidEmails" nillable="true" type="ns1:XSInvalidEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewContactVO">
+                <xs:sequence>
+                    <xs:element name="contactOwnerId" nillable="true" type="xs:int"/>
+                    <xs:element name="firstName" nillable="true" type="xs:string"/>
+                    <xs:element name="middleName" nillable="true" type="xs:string"/>
+                    <xs:element name="lastName" nillable="true" type="xs:string"/>
+                    <xs:element name="nickname" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddressAlt1" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddressAlt2" nillable="true" type="xs:string"/>
+                    <xs:element name="category" nillable="true" type="xs:string"/>
+                    <xs:element name="homeAddressLine1" nillable="true" type="xs:string"/>
+                    <xs:element name="homeAddressLine2" nillable="true" type="xs:string"/>
+                    <xs:element name="homeCity" nillable="true" type="xs:string"/>
+                    <xs:element name="homeState" nillable="true" type="xs:string"/>
+                    <xs:element name="homeZipCode" nillable="true" type="xs:string"/>
+                    <xs:element name="homeCountry" nillable="true" type="xs:string"/>
+                    <xs:element name="jobTitle" nillable="true" type="xs:string"/>
+                    <xs:element name="company" nillable="true" type="xs:string"/>
+                    <xs:element name="workWebsite" nillable="true" type="xs:string"/>
+                    <xs:element name="workAddressLine1" nillable="true" type="xs:string"/>
+                    <xs:element name="workAddressLine2" nillable="true" type="xs:string"/>
+                    <xs:element name="workCity" nillable="true" type="xs:string"/>
+                    <xs:element name="workState" nillable="true" type="xs:string"/>
+                    <xs:element name="workZipCode" nillable="true" type="xs:string"/>
+                    <xs:element name="workCountry" nillable="true" type="xs:string"/>
+                    <xs:element name="workPhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="homePhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="mobilePhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="otherPhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="faxNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="pagerNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="personalWebsite" nillable="true" type="xs:string"/>
+                    <xs:element name="birthday" nillable="true" type="xs:string"/>
+                    <xs:element name="notes" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDataFileInput">
+                <xs:sequence>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDataFileOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="dataFileVO" nillable="true" type="ns1:XSDataFileVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDataFileVO">
+                <xs:sequence>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="size" nillable="true" type="xs:long"/>
+                    <xs:element name="storageRootId" nillable="true" type="xs:int"/>
+                    <xs:element name="creationDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="createdBy" nillable="true" type="xs:int"/>
+                    <xs:element name="lastUpdateDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastUpdatedBy" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddPackageDocumentsInput">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="newDocumentVOs" nillable="true" type="ns1:XSNewDocumentVOList"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddPackageDocumentsOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="documentVOs" nillable="true" type="ns1:XSDocumentVOList"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewDocumentVOList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="newDocumentVO" nillable="true" type="ns1:XSNewDocumentVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewDocumentVO">
+                <xs:sequence>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="directoryId" nillable="true" type="xs:int"/>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSInitiateDataFileUploadInput">
+                <xs:sequence>
+                    <xs:element name="uploadFileSize" nillable="true" type="xs:long"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSInitiateDataFileUploadOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                    <xs:element name="chunkSize" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSCompleteDataFileUploadInput">
+                <xs:sequence>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSCompleteDataFileUploadOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="dataFileVO" nillable="true" type="ns1:XSDataFileVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDeliveryInput">
+                <xs:sequence>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="queryMode" nillable="true" type="xs:int"/>
+                    <xs:element name="trackingNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="validatePassword" nillable="true" type="xs:boolean"/>
+                    <xs:element name="base64PasswordHash" nillable="true" type="xs:string"/>
+                    <xs:element name="authenticationKey" nillable="true" type="xs:string"/>
+                    <xs:element name="trackRequest" nillable="true" type="xs:boolean"/>
+                    <xs:element name="accessByRecipient" nillable="true" type="xs:boolean"/>
+                    <xs:element name="requesterId" nillable="true" type="xs:int"/>
+                    <xs:element name="retrieveUnreadReplyCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDeliveryOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="deliveryVO" nillable="true" type="ns1:XSDeliveryVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeliveryVO">
+                <xs:sequence>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="trackingNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="senderId" nillable="true" type="xs:int"/>
+                    <xs:element name="replyToAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="message" nillable="true" type="xs:string"/>
+                    <xs:element name="secureMessage" nillable="true" type="xs:string"/>
+                    <xs:element name="dateAvailable" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="dateExpires" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="requireSignIn" nillable="true" type="xs:boolean"/>
+                    <xs:element name="encodedPassword" nillable="true" type="xs:string"/>
+                    <xs:element name="notifyOnEvents" nillable="true" type="ns1:XSNotifyOnEventList"/>
+                    <xs:element name="notifyOnAccessSetting" nillable="true" type="xs:string"/>
+                    <xs:element name="notificationEmails" nillable="true" type="xs:string"/>
+                    <xs:element name="createdBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateCreated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastUpdatedBy" nillable="true" type="xs:int"/>
+                    <xs:element name="dateLastUpdated" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="lastActivityDate" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="read" nillable="true" type="xs:boolean"/>
+                    <xs:element name="unreadReplyCount" nillable="true" type="xs:int"/>
+                    <xs:element name="notifyWhenRecipientDeletes" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNotifyOnEventList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="event" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddDeliveryInput">
+                <xs:sequence>
+                    <xs:element name="newDeliveryVO" nillable="true" type="ns1:XSNewDeliveryVO"/>
+                    <xs:element name="newRecipientVOs" nillable="true" type="ns1:XSNewRecipientVOList"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="sendNotification" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewDeliveryVO">
+                <xs:sequence>
+                    <xs:element name="packageId" nillable="true" type="xs:int"/>
+                    <xs:element name="trackingNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="replyToAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                    <xs:element name="message" nillable="true" type="xs:string"/>
+                    <xs:element name="secureMessage" nillable="true" type="xs:string"/>
+                    <xs:element name="dateAvailable" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="dateExpires" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="requireSignIn" nillable="true" type="xs:boolean"/>
+                    <xs:element name="notifyWhenRecipientDeletes" nillable="true" type="xs:boolean"/>
+                    <xs:element name="encodedPassword" nillable="true" type="xs:string"/>
+                    <xs:element name="recipientEmails" nillable="true" type="ns1:XSRecipientEmails"/>
+                    <xs:element name="autoRegisterNonUsers" nillable="true" type="xs:boolean"/>
+                    <xs:element name="notifyOnEvents" nillable="true" type="ns1:XSNotifyOnEventList"/>
+                    <xs:element name="notifyOnAccessSetting" nillable="true" type="xs:string"/>
+                    <xs:element name="notificationEmails" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSRecipientEmails">
+                <xs:sequence>
+                    <xs:element name="to" nillable="true" type="ns1:XSEmailList"/>
+                    <xs:element name="cc" nillable="true" type="ns1:XSEmailList"/>
+                    <xs:element name="bcc" nillable="true" type="ns1:XSEmailList"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewRecipientVOList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="newRecipientVO" nillable="true" type="ns1:XSNewRecipientVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewRecipientVO">
+                <xs:sequence>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="emailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="category" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddDeliveryOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="deliveryVO" nillable="true" type="ns1:XSDeliveryVO"/>
+                    <xs:element name="nonUserEmails" nillable="true" type="ns1:XSNonUserEmails"/>
+                    <xs:element name="inactiveUsers" nillable="true" type="ns1:XSInactiveUsers"/>
+                    <xs:element name="nonRecipients" nillable="true" type="ns1:XSNonRecipients"/>
+                    <xs:element name="invalidEmails" nillable="true" type="ns1:XSInvalidEmails"/>
+                    <xs:element name="rejectedEmails" nillable="true" type="ns1:XSRejectedEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditDeliveryInput">
+                <xs:sequence>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="newPropValues" nillable="true" type="ns1:XSEditPropValues"/>
+                    <xs:element name="newRecipientVOs" nillable="true" type="ns1:XSNewRecipientVOList"/>
+                    <xs:element name="deleteRecipientVOList" nillable="true" type="ns1:XSDeleteRecipientVOList"/>
+                    <xs:element name="autoRegisterNonUsers" nillable="true" type="xs:boolean"/>
+                    <xs:element name="sendNotification" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditDeliveryOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="deliveryVO" nillable="true" type="ns1:XSDeliveryVO"/>
+                    <xs:element name="nonUserEmails" nillable="true" type="ns1:XSNonUserEmails"/>
+                    <xs:element name="inactiveUsers" nillable="true" type="ns1:XSInactiveUsers"/>
+                    <xs:element name="nonRecipients" nillable="true" type="ns1:XSNonRecipients"/>
+                    <xs:element name="invalidEmails" nillable="true" type="ns1:XSInvalidEmails"/>
+                    <xs:element name="rejectedEmails" nillable="true" type="ns1:XSRejectedEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNonRecipients">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="nonRecipient" nillable="true" type="ns1:XSUserVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSRejectedEmails">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="rejectedEmail" nillable="true" type="ns1:XSEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteRecipientVOList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="deleteRecipientVO" nillable="true" type="ns1:XSDeleteRecipientVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteRecipientVO">
+                <xs:sequence>
+                    <xs:element name="recipientEmailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="category" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteDeliveryInput">
+                <xs:sequence>
+                    <xs:element name="deliveryId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteDeliveryOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditContactInput">
+                <xs:sequence>
+                    <xs:element name="contactId" nillable="true" type="xs:int"/>
+                    <xs:element name="newPropValues" nillable="true" type="ns1:XSContactEditPropValues"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSContactEditPropValues">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="newPropValue" nillable="true" type="ns1:XSContactEditPropValue"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSContactEditPropValue">
+                <xs:sequence>
+                    <xs:element name="key" nillable="true" type="xs:string"/>
+                    <xs:element name="value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditContactOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="contactVO" nillable="true" type="ns1:XSContactVO"/>
+                    <xs:element name="invalidEmails" nillable="true" type="ns1:XSInvalidEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteContactInput">
+                <xs:sequence>
+                    <xs:element name="contactId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteContactOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetInitPropertiesInput">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="names" nillable="true" type="xs:string"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="retrieveRows" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveTotalRowCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetInitPropertiesOutput">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="initProperties" nillable="true" type="ns1:XSInitProperty"/>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSInitProperty">
+                <xs:sequence>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddExpressDeliveryInput">
+                <xs:sequence>
+                    <xs:element name="trackingNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="recipientEmails" nillable="true" type="ns1:XSRecipientEmails"/>
+                    <xs:element name="subject" nillable="true" type="xs:string"/>
+                    <xs:element name="secureMessage" nillable="true" type="ns1:XSTextMessage"/>
+                    <xs:element name="notificationMessage" nillable="true" type="ns1:XSTextMessage"/>
+                    <xs:element name="dateAvailable" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="dateExpires" nillable="true" type="xs:dateTime"/>
+                    <xs:element name="notifyRecipients" nillable="true" type="xs:boolean"/>
+                    <xs:element name="requireSignIn" nillable="true" type="xs:boolean"/>
+                    <xs:element name="notifyWhenRecipientDeletes" nillable="true" type="xs:boolean"/>
+                    <xs:element name="encodedPassword" nillable="true" type="xs:string"/>
+                    <xs:element name="notifyOnEvents" nillable="true" type="ns1:XSNotifyOnEventList"/>
+                    <xs:element name="notifyOnAccessSetting" nillable="true" type="xs:string"/>
+                    <xs:element name="notificationEmails" nillable="true" type="ns1:XSEmailList"/>
+                    <xs:element name="newDocumentVOs" nillable="true" type="ns1:XSNewDocumentVOList"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDataFileVOList">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="dataFileVO" nillable="true" type="ns1:XSDataFileVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddExpressDeliveryOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="deliveryVO" nillable="true" type="ns1:XSDeliveryVO"/>
+                    <xs:element name="nonUserEmails" nillable="true" type="ns1:XSNonUserEmails"/>
+                    <xs:element name="inactiveUsers" nillable="true" type="ns1:XSInactiveUsers"/>
+                    <xs:element name="nonRecipients" nillable="true" type="ns1:XSNonRecipients"/>
+                    <xs:element name="invalidEmails" nillable="true" type="ns1:XSInvalidEmails"/>
+                    <xs:element name="rejectedEmails" nillable="true" type="ns1:XSRejectedEmails"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSTextMessage">
+                <xs:sequence>
+                    <xs:element name="message" nillable="true" type="xs:string"/>
+                    <xs:element name="useDefault" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetNewTrackingNumberInput">
+                <xs:sequence>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetNewTrackingNumberOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="trackingNumber" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetAddressListInput">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="retrieveContacts" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveGroups" nillable="true" type="xs:boolean"/>
+                    <xs:element name="roles" nillable="true" type="ns1:XSRoles"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                    <xs:element name="searchFilter" nillable="true" type="ns1:XSSearchFilter"/>
+                    <xs:element name="sortVO" nillable="true" type="ns1:XSSortVO"/>
+                    <xs:element name="range" nillable="true" type="ns1:XSRange"/>
+                    <xs:element name="retrieveRows" nillable="true" type="xs:boolean"/>
+                    <xs:element name="retrieveTotalRowCount" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetAddressListOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element maxOccurs="unbounded" name="addressListComposite" nillable="true" type="ns1:XSAddressListComposite"/>
+                    <xs:element name="totalRowCount" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddressListComposite">
+                <xs:sequence>
+                    <xs:element name="addressListEntry" nillable="true" type="ns1:XSAddressListEntry"/>
+                    <xs:element name="extRecipientVO" nillable="true" type="ns1:XSExtRecipientVO"/>
+                    <xs:element name="recipientVO" nillable="true" type="ns1:XSRecipientVO"/>
+                    <xs:element name="contactVO" nillable="true" type="ns1:XSContactVO"/>
+                    <xs:element name="userVO" nillable="true" type="ns1:XSUserVO"/>
+                    <xs:element name="groupVO" nillable="true" type="ns1:XSGroupVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddressListEntry">
+                <xs:sequence>
+                    <xs:element name="id" nillable="true" type="xs:int"/>
+                    <xs:element name="displayName" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="refName" nillable="true" type="xs:string"/>
+                    <xs:element name="type" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGroupVO">
+                <xs:sequence>
+                    <xs:element name="groupId" nillable="true" type="xs:int"/>
+                    <xs:element name="status" nillable="true" type="xs:string"/>
+                    <xs:element name="type" nillable="true" type="xs:string"/>
+                    <xs:element name="name" nillable="true" type="xs:string"/>
+                    <xs:element name="description" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSRegisterUserInput">
+                <xs:sequence>
+                    <xs:element name="newUserVO" nillable="true" type="ns1:XSNewUserVO"/>
+                    <xs:element name="errorOnMaxSendersLimit" nillable="true" type="xs:boolean"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewUserVO">
+                <xs:sequence>
+                    <xs:element name="username" nillable="true" type="xs:string"/>
+                    <xs:element name="authenticationMethod" nillable="true" type="xs:string"/>
+                    <xs:element name="encodedAuthValue" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="firstName" nillable="true" type="xs:string"/>
+                    <xs:element name="middleName" nillable="true" type="xs:string"/>
+                    <xs:element name="lastName" nillable="true" type="xs:string"/>
+                    <xs:element name="displayName" nillable="true" type="xs:string"/>
+                    <xs:element name="title" nillable="true" type="xs:string"/>
+                    <xs:element name="company" nillable="true" type="xs:string"/>
+                    <xs:element name="addressLine1" nillable="true" type="xs:string"/>
+                    <xs:element name="addressLine2" nillable="true" type="xs:string"/>
+                    <xs:element name="city" nillable="true" type="xs:string"/>
+                    <xs:element name="state" nillable="true" type="xs:string"/>
+                    <xs:element name="zipCode" nillable="true" type="xs:string"/>
+                    <xs:element name="country" nillable="true" type="xs:string"/>
+                    <xs:element name="workPhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="homePhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="mobilePhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="otherPhoneNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="faxNumber" nillable="true" type="xs:string"/>
+                    <xs:element name="newSecretQuestions" nillable="true" type="ns1:XSNewSecretQuestions"/>
+                    <xs:element name="recipientInclusionList" nillable="true" type="xs:string"/>
+                    <xs:element name="recipientExclusionList" nillable="true" type="xs:string"/>
+                    <xs:element name="allowSMTPInput" nillable="true" type="xs:boolean"/>
+                    <xs:element name="roles" nillable="true" type="ns1:XSRoles"/>
+                    <xs:element name="passwordExpires" nillable="true" type="xs:boolean"/>
+                    <xs:element name="forcePasswordReset" nillable="true" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewSecretQuestions">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="newSecretQuestion" nillable="true" type="ns1:XSNewSecretQuestionVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSNewSecretQuestionVO">
+                <xs:sequence>
+                    <xs:element name="questionCode" nillable="true" type="xs:string"/>
+                    <xs:element name="question" nillable="true" type="xs:string"/>
+                    <xs:element name="answer" nillable="true" type="xs:string"/>
+                    <xs:element name="answerHint" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSRegisterUserOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="userVO" nillable="true" type="ns1:XSUserVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteUserInput">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSDeleteUserOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSResetUserPasswordInput">
+                <xs:sequence>
+                    <xs:element name="mode" nillable="true" type="ns1:XSMode"/>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="username" nillable="true" type="xs:string"/>
+                    <xs:element name="emailAddress" nillable="true" type="xs:string"/>
+                    <xs:element name="oldPassword" nillable="true" type="xs:string"/>
+                    <xs:element name="newPassword" nillable="true" type="xs:string"/>
+                    <xs:element name="generatePassword" nillable="true" type="xs:boolean"/>
+                    <xs:element name="forcePasswordReset" nillable="true" type="xs:boolean"/>
+                    <xs:element name="sendConfirmationEmail" nillable="true" type="xs:boolean"/>
+                    <xs:element name="answers" nillable="true" type="ns1:XSAnswers"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="XSMode">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="MODE_ADMIN"/>
+                    <xs:enumeration value="MODE_USER"/>
+                    <xs:enumeration value="MODE_USER_QUESTION"/>
+                    <xs:enumeration value="MODE_PASSWORD_EXPIRE"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="XSAnswers">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="answer" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSResetUserPasswordOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditUserInput">
+                <xs:sequence>
+                    <xs:element name="userId" nillable="true" type="xs:int"/>
+                    <xs:element name="newPropValues" nillable="true" type="ns1:XSUserEditPropValues"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSUserEditPropValues">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="newPropValue" nillable="true" type="ns1:XSUserEditPropValue"/>
+                    <xs:element name="questionVOs" nillable="true" type="ns1:XSQuestionVOs"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSUserEditPropValue">
+                <xs:sequence>
+                    <xs:element name="key" nillable="true" type="xs:string"/>
+                    <xs:element name="value" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSQuestionVOs">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="questionVO" nillable="true" type="ns1:XSQuestionVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSQuestionVO">
+                <xs:sequence>
+                    <xs:element name="questionId" nillable="true" type="xs:int"/>
+                    <xs:element name="questionCode" nillable="true" type="xs:string"/>
+                    <xs:element name="question" nillable="true" type="xs:string"/>
+                    <xs:element name="answer" nillable="true" type="xs:string"/>
+                    <xs:element name="answerHint" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSEditUserOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="userVO" nillable="true" type="ns1:XSUserVO"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSCheckAvailableQuotaInput">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="userEmails" nillable="true" type="xs:string"/>
+                    <xs:element name="askingQuota" nillable="true" type="xs:long"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSCheckAvailableQuotaOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="requiredQuota" nillable="true" type="xs:long"/>
+                    <xs:element name="mapInsufficientQuotas" nillable="true" type="ns1:XSMapInsufficientQuotas"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSMapInsufficientQuotas">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="mapInsufficientQuota" nillable="true" type="ns1:XSInsufficientQuota"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSInsufficientQuota">
+                <xs:sequence>
+                    <xs:element name="userEmail" nillable="true" type="xs:string"/>
+                    <xs:element name="insufficientQuota" nillable="true" type="xs:long"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSInternalWebServiceCommandInput">
+                <xs:sequence>
+                    <xs:element name="command" nillable="true" type="xs:string"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSInternalWebServiceCommandOutput">
+                <xs:sequence>
+                    <xs:element name="response" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="getContactMessage">
+        <wsdl:part name="part1" element="ns2:getContact"/>
+    </wsdl:message>
+    <wsdl:message name="getContactResponseMessage">
+        <wsdl:part name="part1" element="ns2:getContactResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteContactMessage">
+        <wsdl:part name="part1" element="ns2:deleteContact"/>
+    </wsdl:message>
+    <wsdl:message name="deleteContactResponseMessage">
+        <wsdl:part name="part1" element="ns2:deleteContactResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addDeliveryMessage">
+        <wsdl:part name="part1" element="ns2:addDelivery"/>
+    </wsdl:message>
+    <wsdl:message name="addDeliveryResponseMessage">
+        <wsdl:part name="part1" element="ns2:addDeliveryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addDirectoryMessage">
+        <wsdl:part name="part1" element="ns2:addDirectory"/>
+    </wsdl:message>
+    <wsdl:message name="addDirectoryResponseMessage">
+        <wsdl:part name="part1" element="ns2:addDirectoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDocumentMessage">
+        <wsdl:part name="part1" element="ns2:getDocument"/>
+    </wsdl:message>
+    <wsdl:message name="getDocumentResponseMessage">
+        <wsdl:part name="part1" element="ns2:getDocumentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryRecipientsMessage">
+        <wsdl:part name="part1" element="ns2:getDeliveryRecipients"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryRecipientsResponseMessage">
+        <wsdl:part name="part1" element="ns2:getDeliveryRecipientsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="checkAvailableQuotaMessage">
+        <wsdl:part name="part1" element="ns2:checkAvailableQuota"/>
+    </wsdl:message>
+    <wsdl:message name="checkAvailableQuotaResponseMessage">
+        <wsdl:part name="part1" element="ns2:checkAvailableQuotaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageVersionMessage">
+        <wsdl:part name="part1" element="ns2:getPackageVersion"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageVersionResponseMessage">
+        <wsdl:part name="part1" element="ns2:getPackageVersionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getInitPropertiesMessage">
+        <wsdl:part name="part1" element="ns2:getInitProperties"/>
+    </wsdl:message>
+    <wsdl:message name="getInitPropertiesResponseMessage">
+        <wsdl:part name="part1" element="ns2:getInitPropertiesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteDeliveryMessage">
+        <wsdl:part name="part1" element="ns2:deleteDelivery"/>
+    </wsdl:message>
+    <wsdl:message name="deleteDeliveryResponseMessage">
+        <wsdl:part name="part1" element="ns2:deleteDeliveryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageOwnersMessage">
+        <wsdl:part name="part1" element="ns2:getPackageOwners"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageOwnersResponseMessage">
+        <wsdl:part name="part1" element="ns2:getPackageOwnersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editPackageMessage">
+        <wsdl:part name="part1" element="ns2:editPackage"/>
+    </wsdl:message>
+    <wsdl:message name="editPackageResponseMessage">
+        <wsdl:part name="part1" element="ns2:editPackageResponse"/>
+    </wsdl:message>
+    <wsdl:message name="initiateDataFileUploadMessage">
+        <wsdl:part name="part1" element="ns2:initiateDataFileUpload"/>
+    </wsdl:message>
+    <wsdl:message name="initiateDataFileUploadResponseMessage">
+        <wsdl:part name="part1" element="ns2:initiateDataFileUploadResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addContactMessage">
+        <wsdl:part name="part1" element="ns2:addContact"/>
+    </wsdl:message>
+    <wsdl:message name="addContactResponseMessage">
+        <wsdl:part name="part1" element="ns2:addContactResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryMessage">
+        <wsdl:part name="part1" element="ns2:getDelivery"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryResponseMessage">
+        <wsdl:part name="part1" element="ns2:getDeliveryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDocumentsMessage">
+        <wsdl:part name="part1" element="ns2:getDocuments"/>
+    </wsdl:message>
+    <wsdl:message name="getDocumentsResponseMessage">
+        <wsdl:part name="part1" element="ns2:getDocumentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addPackageVersionMessage">
+        <wsdl:part name="part1" element="ns2:addPackageVersion"/>
+    </wsdl:message>
+    <wsdl:message name="addPackageVersionResponseMessage">
+        <wsdl:part name="part1" element="ns2:addPackageVersionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="resetUserPasswordMessage">
+        <wsdl:part name="part1" element="ns2:resetUserPassword"/>
+    </wsdl:message>
+    <wsdl:message name="resetUserPasswordResponseMessage">
+        <wsdl:part name="part1" element="ns2:resetUserPasswordResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteUserMessage">
+        <wsdl:part name="part1" element="ns2:deleteUser"/>
+    </wsdl:message>
+    <wsdl:message name="deleteUserResponseMessage">
+        <wsdl:part name="part1" element="ns2:deleteUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editDeliveryMessage">
+        <wsdl:part name="part1" element="ns2:editDelivery"/>
+    </wsdl:message>
+    <wsdl:message name="editDeliveryResponseMessage">
+        <wsdl:part name="part1" element="ns2:editDeliveryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getAddressListMessage">
+        <wsdl:part name="part1" element="ns2:getAddressList"/>
+    </wsdl:message>
+    <wsdl:message name="getAddressListResponseMessage">
+        <wsdl:part name="part1" element="ns2:getAddressListResponse"/>
+    </wsdl:message>
+    <wsdl:message name="sendDeliveryNotificationsMessage">
+        <wsdl:part name="part1" element="ns2:sendDeliveryNotifications"/>
+    </wsdl:message>
+    <wsdl:message name="sendDeliveryNotificationsResponseMessage">
+        <wsdl:part name="part1" element="ns2:sendDeliveryNotificationsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="signOutMessage">
+        <wsdl:part name="part1" element="ns2:signOut"/>
+    </wsdl:message>
+    <wsdl:message name="signOutResponseMessage">
+        <wsdl:part name="part1" element="ns2:signOutResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDataFileMessage">
+        <wsdl:part name="part1" element="ns2:getDataFile"/>
+    </wsdl:message>
+    <wsdl:message name="getDataFileResponseMessage">
+        <wsdl:part name="part1" element="ns2:getDataFileResponse"/>
+    </wsdl:message>
+    <wsdl:message name="iwscMessage">
+        <wsdl:part name="part1" element="ns2:iwsc"/>
+    </wsdl:message>
+    <wsdl:message name="iwscResponseMessage">
+        <wsdl:part name="part1" element="ns2:iwscResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageMessage">
+        <wsdl:part name="part1" element="ns2:getPackage"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageResponseMessage">
+        <wsdl:part name="part1" element="ns2:getPackageResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getNewTrackingNumberMessage">
+        <wsdl:part name="part1" element="ns2:getNewTrackingNumber"/>
+    </wsdl:message>
+    <wsdl:message name="getNewTrackingNumberResponseMessage">
+        <wsdl:part name="part1" element="ns2:getNewTrackingNumberResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deletePackageMessage">
+        <wsdl:part name="part1" element="ns2:deletePackage"/>
+    </wsdl:message>
+    <wsdl:message name="deletePackageResponseMessage">
+        <wsdl:part name="part1" element="ns2:deletePackageResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editDocumentMessage">
+        <wsdl:part name="part1" element="ns2:editDocument"/>
+    </wsdl:message>
+    <wsdl:message name="editDocumentResponseMessage">
+        <wsdl:part name="part1" element="ns2:editDocumentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageSendersMessage">
+        <wsdl:part name="part1" element="ns2:getPackageSenders"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageSendersResponseMessage">
+        <wsdl:part name="part1" element="ns2:getPackageSendersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageDeliveriesMessage">
+        <wsdl:part name="part1" element="ns2:getPackageDeliveries"/>
+    </wsdl:message>
+    <wsdl:message name="getPackageDeliveriesResponseMessage">
+        <wsdl:part name="part1" element="ns2:getPackageDeliveriesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addExpressDeliveryMessage">
+        <wsdl:part name="part1" element="ns2:addExpressDelivery"/>
+    </wsdl:message>
+    <wsdl:message name="addExpressDeliveryResponseMessage">
+        <wsdl:part name="part1" element="ns2:addExpressDeliveryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteDocumentMessage">
+        <wsdl:part name="part1" element="ns2:deleteDocument"/>
+    </wsdl:message>
+    <wsdl:message name="deleteDocumentResponseMessage">
+        <wsdl:part name="part1" element="ns2:deleteDocumentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editPackageVersionMessage">
+        <wsdl:part name="part1" element="ns2:editPackageVersion"/>
+    </wsdl:message>
+    <wsdl:message name="editPackageVersionResponseMessage">
+        <wsdl:part name="part1" element="ns2:editPackageVersionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getSendersMessage">
+        <wsdl:part name="part1" element="ns2:getSenders"/>
+    </wsdl:message>
+    <wsdl:message name="getSendersResponseMessage">
+        <wsdl:part name="part1" element="ns2:getSendersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getOwnersMessage">
+        <wsdl:part name="part1" element="ns2:getOwners"/>
+    </wsdl:message>
+    <wsdl:message name="getOwnersResponseMessage">
+        <wsdl:part name="part1" element="ns2:getOwnersResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getUserRolesMessageV2">
+        <wsdl:part name="part1" element="ns2:getUserRolesV2"/>
+    </wsdl:message>
+    <wsdl:message name="getUserRolesResponseMessageV2">
+        <wsdl:part name="part1" element="ns2:getUserRolesResponseV2"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryTransactionsMessage">
+        <wsdl:part name="part1" element="ns2:getDeliveryTransactions"/>
+    </wsdl:message>
+    <wsdl:message name="getDeliveryTransactionsResponseMessage">
+        <wsdl:part name="part1" element="ns2:getDeliveryTransactionsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getUserRolesMessage">
+        <wsdl:part name="part1" element="ns2:getUserRoles"/>
+    </wsdl:message>
+    <wsdl:message name="getUserRolesResponseMessage">
+        <wsdl:part name="part1" element="ns2:getUserRolesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editContactMessage">
+        <wsdl:part name="part1" element="ns2:editContact"/>
+    </wsdl:message>
+    <wsdl:message name="editContactResponseMessage">
+        <wsdl:part name="part1" element="ns2:editContactResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDirectoryMessage">
+        <wsdl:part name="part1" element="ns2:getDirectory"/>
+    </wsdl:message>
+    <wsdl:message name="getDirectoryResponseMessage">
+        <wsdl:part name="part1" element="ns2:getDirectoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="registerUserMessage">
+        <wsdl:part name="part1" element="ns2:registerUser"/>
+    </wsdl:message>
+    <wsdl:message name="registerUserResponseMessage">
+        <wsdl:part name="part1" element="ns2:registerUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getUserPackagesMessage">
+        <wsdl:part name="part1" element="ns2:getUserPackages"/>
+    </wsdl:message>
+    <wsdl:message name="getUserPackagesResponseMessage">
+        <wsdl:part name="part1" element="ns2:getUserPackagesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getUserDeliveriesMessage">
+        <wsdl:part name="part1" element="ns2:getUserDeliveries"/>
+    </wsdl:message>
+    <wsdl:message name="getUserDeliveriesResponseMessage">
+        <wsdl:part name="part1" element="ns2:getUserDeliveriesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="signInMessage">
+        <wsdl:part name="part1" element="ns2:signIn"/>
+    </wsdl:message>
+    <wsdl:message name="signInResponseMessage">
+        <wsdl:part name="part1" element="ns2:signInResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addPackageMessage">
+        <wsdl:part name="part1" element="ns2:addPackage"/>
+    </wsdl:message>
+    <wsdl:message name="addPackageResponseMessage">
+        <wsdl:part name="part1" element="ns2:addPackageResponse"/>
+    </wsdl:message>
+    <wsdl:message name="editUserMessage">
+        <wsdl:part name="part1" element="ns2:editUser"/>
+    </wsdl:message>
+    <wsdl:message name="editUserResponseMessage">
+        <wsdl:part name="part1" element="ns2:editUserResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addPackageDocumentsMessage">
+        <wsdl:part name="part1" element="ns2:addPackageDocuments"/>
+    </wsdl:message>
+    <wsdl:message name="addPackageDocumentsResponseMessage">
+        <wsdl:part name="part1" element="ns2:addPackageDocumentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="completeDataFileUploadMessage">
+        <wsdl:part name="part1" element="ns2:completeDataFileUpload"/>
+    </wsdl:message>
+    <wsdl:message name="completeDataFileUploadResponseMessage">
+        <wsdl:part name="part1" element="ns2:completeDataFileUploadResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="FDSAPIPortType">
+        <wsdl:operation name="getContact">
+            <wsdl:input message="ns:getContactMessage" wsaw:Action="urn:getContact"/>
+            <wsdl:output message="ns:getContactResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getContactResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteContact">
+            <wsdl:input message="ns:deleteContactMessage" wsaw:Action="urn:deleteContact"/>
+            <wsdl:output message="ns:deleteContactResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/deleteContactResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addDelivery">
+            <wsdl:input message="ns:addDeliveryMessage" wsaw:Action="urn:addDelivery"/>
+            <wsdl:output message="ns:addDeliveryResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/addDeliveryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addDirectory">
+            <wsdl:input message="ns:addDirectoryMessage" wsaw:Action="urn:addDirectory"/>
+            <wsdl:output message="ns:addDirectoryResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/addDirectoryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDocument">
+            <wsdl:input message="ns:getDocumentMessage" wsaw:Action="urn:getDocument"/>
+            <wsdl:output message="ns:getDocumentResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getDocumentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryRecipients">
+            <wsdl:input message="ns:getDeliveryRecipientsMessage" wsaw:Action="urn:getDeliveryRecipients"/>
+            <wsdl:output message="ns:getDeliveryRecipientsResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getDeliveryRecipientsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="checkAvailableQuota">
+            <wsdl:input message="ns:checkAvailableQuotaMessage" wsaw:Action="urn:checkAvailableQuota"/>
+            <wsdl:output message="ns:checkAvailableQuotaResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/checkAvailableQuotaResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageVersion">
+            <wsdl:input message="ns:getPackageVersionMessage" wsaw:Action="urn:getPackageVersion"/>
+            <wsdl:output message="ns:getPackageVersionResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getPackageVersionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInitProperties">
+            <wsdl:input message="ns:getInitPropertiesMessage" wsaw:Action="urn:getInitProperties"/>
+            <wsdl:output message="ns:getInitPropertiesResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getInitPropertiesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDelivery">
+            <wsdl:input message="ns:deleteDeliveryMessage" wsaw:Action="urn:deleteDelivery"/>
+            <wsdl:output message="ns:deleteDeliveryResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/deleteDeliveryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageOwners">
+            <wsdl:input message="ns:getPackageOwnersMessage" wsaw:Action="urn:getPackageOwners"/>
+            <wsdl:output message="ns:getPackageOwnersResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getPackageOwnersResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editPackage">
+            <wsdl:input message="ns:editPackageMessage" wsaw:Action="urn:editPackage"/>
+            <wsdl:output message="ns:editPackageResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/editPackageResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="initiateDataFileUpload">
+            <wsdl:input message="ns:initiateDataFileUploadMessage" wsaw:Action="urn:initiateDataFileUpload"/>
+            <wsdl:output message="ns:initiateDataFileUploadResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/initiateDataFileUploadResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addContact">
+            <wsdl:input message="ns:addContactMessage" wsaw:Action="urn:addContact"/>
+            <wsdl:output message="ns:addContactResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/addContactResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDelivery">
+            <wsdl:input message="ns:getDeliveryMessage" wsaw:Action="urn:getDelivery"/>
+            <wsdl:output message="ns:getDeliveryResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getDeliveryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDocuments">
+            <wsdl:input message="ns:getDocumentsMessage" wsaw:Action="urn:getDocuments"/>
+            <wsdl:output message="ns:getDocumentsResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getDocumentsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addPackageVersion">
+            <wsdl:input message="ns:addPackageVersionMessage" wsaw:Action="urn:addPackageVersion"/>
+            <wsdl:output message="ns:addPackageVersionResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/addPackageVersionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="resetUserPassword">
+            <wsdl:input message="ns:resetUserPasswordMessage" wsaw:Action="urn:resetUserPassword"/>
+            <wsdl:output message="ns:resetUserPasswordResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/resetUserPasswordResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <wsdl:input message="ns:deleteUserMessage" wsaw:Action="urn:deleteUser"/>
+            <wsdl:output message="ns:deleteUserResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/deleteUserResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editDelivery">
+            <wsdl:input message="ns:editDeliveryMessage" wsaw:Action="urn:editDelivery"/>
+            <wsdl:output message="ns:editDeliveryResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/editDeliveryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAddressList">
+            <wsdl:input message="ns:getAddressListMessage" wsaw:Action="urn:getAddressList"/>
+            <wsdl:output message="ns:getAddressListResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getAddressListResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="sendDeliveryNotifications">
+            <wsdl:input message="ns:sendDeliveryNotificationsMessage" wsaw:Action="urn:sendDeliveryNotifications"/>
+            <wsdl:output message="ns:sendDeliveryNotificationsResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/sendDeliveryNotificationsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="signOut">
+            <wsdl:input message="ns:signOutMessage" wsaw:Action="urn:signOut"/>
+            <wsdl:output message="ns:signOutResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/signOutResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDataFile">
+            <wsdl:input message="ns:getDataFileMessage" wsaw:Action="urn:getDataFile"/>
+            <wsdl:output message="ns:getDataFileResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getDataFileResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="iwsc">
+            <wsdl:input message="ns:iwscMessage" wsaw:Action="urn:iwsc"/>
+            <wsdl:output message="ns:iwscResponseMessage" wsaw:Action="//FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/iwscResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPackage">
+            <wsdl:input message="ns:getPackageMessage" wsaw:Action="urn:getPackage"/>
+            <wsdl:output message="ns:getPackageResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getPackageResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getNewTrackingNumber">
+            <wsdl:input message="ns:getNewTrackingNumberMessage" wsaw:Action="urn:getNewTrackingNumber"/>
+            <wsdl:output message="ns:getNewTrackingNumberResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getNewTrackingNumberResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deletePackage">
+            <wsdl:input message="ns:deletePackageMessage" wsaw:Action="urn:deletePackage"/>
+            <wsdl:output message="ns:deletePackageResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/deletePackageResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editDocument">
+            <wsdl:input message="ns:editDocumentMessage" wsaw:Action="urn:editDocument"/>
+            <wsdl:output message="ns:editDocumentResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/editDocumentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageSenders">
+            <wsdl:input message="ns:getPackageSendersMessage" wsaw:Action="urn:getPackageSenders"/>
+            <wsdl:output message="ns:getPackageSendersResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getPackageSendersResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageDeliveries">
+            <wsdl:input message="ns:getPackageDeliveriesMessage" wsaw:Action="urn:getPackageDeliveries"/>
+            <wsdl:output message="ns:getPackageDeliveriesResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getPackageDeliveriesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addExpressDelivery">
+            <wsdl:input message="ns:addExpressDeliveryMessage" wsaw:Action="urn:addExpressDelivery"/>
+            <wsdl:output message="ns:addExpressDeliveryResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/addExpressDeliveryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDocument">
+            <wsdl:input message="ns:deleteDocumentMessage" wsaw:Action="urn:deleteDocument"/>
+            <wsdl:output message="ns:deleteDocumentResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/deleteDocumentResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editPackageVersion">
+            <wsdl:input message="ns:editPackageVersionMessage" wsaw:Action="urn:editPackageVersion"/>
+            <wsdl:output message="ns:editPackageVersionResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/editPackageVersionResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getSenders">
+            <wsdl:input message="ns:getSendersMessage" wsaw:Action="urn:getSenders"/>
+            <wsdl:output message="ns:getSendersResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getSendersResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getOwners">
+            <wsdl:input message="ns:getOwnersMessage" wsaw:Action="urn:getOwners"/>
+            <wsdl:output message="ns:getOwnersResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getOwnersResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUserRolesV2">
+            <wsdl:input message="ns:getUserRolesMessageV2" wsaw:Action="urn:getUserRolesV2"/>
+            <wsdl:output message="ns:getUserRolesResponseMessageV2" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getUserRolesV2Response"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryTransactions">
+            <wsdl:input message="ns:getDeliveryTransactionsMessage" wsaw:Action="urn:getDeliveryTransactions"/>
+            <wsdl:output message="ns:getDeliveryTransactionsResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getDeliveryTransactionsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUserRoles">
+            <wsdl:input message="ns:getUserRolesMessage" wsaw:Action="urn:getUserRoles"/>
+            <wsdl:output message="ns:getUserRolesResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getUserRolesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editContact">
+            <wsdl:input message="ns:editContactMessage" wsaw:Action="urn:editContact"/>
+            <wsdl:output message="ns:editContactResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/editContactResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDirectory">
+            <wsdl:input message="ns:getDirectoryMessage" wsaw:Action="urn:getDirectory"/>
+            <wsdl:output message="ns:getDirectoryResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getDirectoryResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="registerUser">
+            <wsdl:input message="ns:registerUserMessage" wsaw:Action="urn:registerUser"/>
+            <wsdl:output message="ns:registerUserResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/registerUserResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUserPackages">
+            <wsdl:input message="ns:getUserPackagesMessage" wsaw:Action="urn:getUserPackages"/>
+            <wsdl:output message="ns:getUserPackagesResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getUserPackagesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getUserDeliveries">
+            <wsdl:input message="ns:getUserDeliveriesMessage" wsaw:Action="urn:getUserDeliveries"/>
+            <wsdl:output message="ns:getUserDeliveriesResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getUserDeliveriesResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="signIn">
+            <wsdl:input message="ns:signInMessage" wsaw:Action="urn:signIn"/>
+            <wsdl:output message="ns:signInResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/signInResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addPackage">
+            <wsdl:input message="ns:addPackageMessage" wsaw:Action="urn:addPackage"/>
+            <wsdl:output message="ns:addPackageResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/addPackageResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="editUser">
+            <wsdl:input message="ns:editUserMessage" wsaw:Action="urn:editUser"/>
+            <wsdl:output message="ns:editUserResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/editUserResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addPackageDocuments">
+            <wsdl:input message="ns:addPackageDocumentsMessage" wsaw:Action="urn:addPackageDocuments"/>
+            <wsdl:output message="ns:addPackageDocumentsResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/addPackageDocumentsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="completeDataFileUpload">
+            <wsdl:input message="ns:completeDataFileUploadMessage" wsaw:Action="urn:completeDataFileUpload"/>
+            <wsdl:output message="ns:completeDataFileUploadResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/completeDataFileUploadResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="FDSAPISOAP11Binding" type="ns:FDSAPIPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getContact">
+            <soap:operation soapAction="urn:getContact" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteContact">
+            <soap:operation soapAction="urn:deleteContact" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addDelivery">
+            <soap:operation soapAction="urn:addDelivery" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addDirectory">
+            <soap:operation soapAction="urn:addDirectory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDocument">
+            <soap:operation soapAction="urn:getDocument" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryRecipients">
+            <soap:operation soapAction="urn:getDeliveryRecipients" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="checkAvailableQuota">
+            <soap:operation soapAction="urn:checkAvailableQuota" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageVersion">
+            <soap:operation soapAction="urn:getPackageVersion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInitProperties">
+            <soap:operation soapAction="urn:getInitProperties" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDelivery">
+            <soap:operation soapAction="urn:deleteDelivery" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageOwners">
+            <soap:operation soapAction="urn:getPackageOwners" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPackage">
+            <soap:operation soapAction="urn:editPackage" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initiateDataFileUpload">
+            <soap:operation soapAction="urn:initiateDataFileUpload" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addContact">
+            <soap:operation soapAction="urn:addContact" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDelivery">
+            <soap:operation soapAction="urn:getDelivery" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDocuments">
+            <soap:operation soapAction="urn:getDocuments" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addPackageVersion">
+            <soap:operation soapAction="urn:addPackageVersion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="resetUserPassword">
+            <soap:operation soapAction="urn:resetUserPassword" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <soap:operation soapAction="urn:deleteUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDelivery">
+            <soap:operation soapAction="urn:editDelivery" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAddressList">
+            <soap:operation soapAction="urn:getAddressList" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="sendDeliveryNotifications">
+            <soap:operation soapAction="urn:sendDeliveryNotifications" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="signOut">
+            <soap:operation soapAction="urn:signOut" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDataFile">
+            <soap:operation soapAction="urn:getDataFile" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="iwsc">
+            <soap:operation soapAction="urn:iwsc" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackage">
+            <soap:operation soapAction="urn:getPackage" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getNewTrackingNumber">
+            <soap:operation soapAction="urn:getNewTrackingNumber" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePackage">
+            <soap:operation soapAction="urn:deletePackage" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDocument">
+            <soap:operation soapAction="urn:editDocument" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageSenders">
+            <soap:operation soapAction="urn:getPackageSenders" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageDeliveries">
+            <soap:operation soapAction="urn:getPackageDeliveries" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addExpressDelivery">
+            <soap:operation soapAction="urn:addExpressDelivery" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDocument">
+            <soap:operation soapAction="urn:deleteDocument" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPackageVersion">
+            <soap:operation soapAction="urn:editPackageVersion" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSenders">
+            <soap:operation soapAction="urn:getSenders" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOwners">
+            <soap:operation soapAction="urn:getOwners" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserRolesV2">
+            <soap:operation soapAction="urn:getUserRolesV2" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryTransactions">
+            <soap:operation soapAction="urn:getDeliveryTransactions" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserRoles">
+            <soap:operation soapAction="urn:getUserRoles" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editContact">
+            <soap:operation soapAction="urn:editContact" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDirectory">
+            <soap:operation soapAction="urn:getDirectory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerUser">
+            <soap:operation soapAction="urn:registerUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserPackages">
+            <soap:operation soapAction="urn:getUserPackages" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserDeliveries">
+            <soap:operation soapAction="urn:getUserDeliveries" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="signIn">
+            <soap:operation soapAction="urn:signIn" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addPackage">
+            <soap:operation soapAction="urn:addPackage" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editUser">
+            <soap:operation soapAction="urn:editUser" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addPackageDocuments">
+            <soap:operation soapAction="urn:addPackageDocuments" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="completeDataFileUpload">
+            <soap:operation soapAction="urn:completeDataFileUpload" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="FDSAPISOAP12Binding" type="ns:FDSAPIPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="getContact">
+            <soap12:operation soapAction="urn:getContact" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteContact">
+            <soap12:operation soapAction="urn:deleteContact" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addDelivery">
+            <soap12:operation soapAction="urn:addDelivery" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addDirectory">
+            <soap12:operation soapAction="urn:addDirectory" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDocument">
+            <soap12:operation soapAction="urn:getDocument" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryRecipients">
+            <soap12:operation soapAction="urn:getDeliveryRecipients" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="checkAvailableQuota">
+            <soap12:operation soapAction="urn:checkAvailableQuota" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageVersion">
+            <soap12:operation soapAction="urn:getPackageVersion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getInitProperties">
+            <soap12:operation soapAction="urn:getInitProperties" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDelivery">
+            <soap12:operation soapAction="urn:deleteDelivery" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageOwners">
+            <soap12:operation soapAction="urn:getPackageOwners" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPackage">
+            <soap12:operation soapAction="urn:editPackage" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="initiateDataFileUpload">
+            <soap12:operation soapAction="urn:initiateDataFileUpload" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addContact">
+            <soap12:operation soapAction="urn:addContact" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDelivery">
+            <soap12:operation soapAction="urn:getDelivery" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDocuments">
+            <soap12:operation soapAction="urn:getDocuments" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addPackageVersion">
+            <soap12:operation soapAction="urn:addPackageVersion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="resetUserPassword">
+            <soap12:operation soapAction="urn:resetUserPassword" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteUser">
+            <soap12:operation soapAction="urn:deleteUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDelivery">
+            <soap12:operation soapAction="urn:editDelivery" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getAddressList">
+            <soap12:operation soapAction="urn:getAddressList" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="sendDeliveryNotifications">
+            <soap12:operation soapAction="urn:sendDeliveryNotifications" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="signOut">
+            <soap12:operation soapAction="urn:signOut" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDataFile">
+            <soap12:operation soapAction="urn:getDataFile" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="iwsc">
+            <soap12:operation soapAction="urn:iwsc" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackage">
+            <soap12:operation soapAction="urn:getPackage" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getNewTrackingNumber">
+            <soap12:operation soapAction="urn:getNewTrackingNumber" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deletePackage">
+            <soap12:operation soapAction="urn:deletePackage" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editDocument">
+            <soap12:operation soapAction="urn:editDocument" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageSenders">
+            <soap12:operation soapAction="urn:getPackageSenders" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getPackageDeliveries">
+            <soap12:operation soapAction="urn:getPackageDeliveries" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addExpressDelivery">
+            <soap12:operation soapAction="urn:addExpressDelivery" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="deleteDocument">
+            <soap12:operation soapAction="urn:deleteDocument" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editPackageVersion">
+            <soap12:operation soapAction="urn:editPackageVersion" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getSenders">
+            <soap12:operation soapAction="urn:getSenders" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getOwners">
+            <soap12:operation soapAction="urn:getOwners" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserRolesV2">
+            <soap12:operation soapAction="urn:getUserRolesV2" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDeliveryTransactions">
+            <soap12:operation soapAction="urn:getDeliveryTransactions" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserRoles">
+            <soap12:operation soapAction="urn:getUserRoles" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editContact">
+            <soap12:operation soapAction="urn:editContact" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDirectory">
+            <soap12:operation soapAction="urn:getDirectory" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="registerUser">
+            <soap12:operation soapAction="urn:registerUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserPackages">
+            <soap12:operation soapAction="urn:getUserPackages" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getUserDeliveries">
+            <soap12:operation soapAction="urn:getUserDeliveries" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="signIn">
+            <soap12:operation soapAction="urn:signIn" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addPackage">
+            <soap12:operation soapAction="urn:addPackage" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="editUser">
+            <soap12:operation soapAction="urn:editUser" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addPackageDocuments">
+            <soap12:operation soapAction="urn:addPackageDocuments" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="completeDataFileUpload">
+            <soap12:operation soapAction="urn:completeDataFileUpload" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="FDSAPI">
+        <wsdl:port name="FDSAPISOAP11port_http" binding="ns:FDSAPISOAP11Binding">
+            <soap:address location="http://fileshare.sungard.com:8080/axis2/services/FDSAPI.FDSAPISOAP11port_http/"/>
+        </wsdl:port>
+        <wsdl:port name="FDSAPISOAP12port_http" binding="ns:FDSAPISOAP12Binding">
+            <soap12:address location="http://fileshare.sungard.com:8080/axis2/services/FDSAPI.FDSAPISOAP12port_http/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

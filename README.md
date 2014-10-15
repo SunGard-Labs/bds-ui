@@ -3,7 +3,7 @@ bds-ui
 This is a "fat client" for the binary distribution system provided by Biscom: http://www.biscom.com/secure-file-transfer/sft/
 
 It uses the SOAP webservices usually deployed with every installation.
-![Screenshot](https://raw.githubusercontent.com/derjust/bds-ui/master/doc/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/SunGard-Labs/bds-ui/master/doc/screenshot.png)
 
 ### Reasons and Features
 Biscom's binary distribution system provides a secure way to upload & download files. Usually access is provided via browser applets for the major browser brands.
@@ -28,7 +28,7 @@ Also the applet lacks some usuability features which come in handy on a day2day 
 The upload rates are a little bit slower - in the end it is a [SOAP](http://en.wikipedia.org/wiki/SOAP)-[base64](http://en.wikipedia.org/wiki/Base64) operation which is by-design not the most efficent way to transmit binary data :/
 
 ## How to run
-Download from https://github.com/derjust/bds-ui/releases 
+Download from https://github.com/SunGard-Labs/bds-ui/releases 
 
 Execute the `bds-ui-<version>.one-jar.jar` as JAR.
 
@@ -39,7 +39,7 @@ Execute the `bds-ui-<version>.one-jar.jar` as JAR.
 
 	* Add a link to `java -jar bds-ui-<version>.one-jar.jar` in `%APPDATA%\Microsoft\Windows\SendTo`. 
 		* All arguments to the JAR are treated as file paths and are prepared for upload.
-		![](https://raw.githubusercontent.com/derjust/bds-ui/master/doc/sendToScreenshot.png)
+		![](https://raw.githubusercontent.com/SunGard-Labs/bds-ui/master/doc/sendToScreenshot.png)
 		* Details can be found here: http://www.howtogeek.com/howto/windows-vista/customize-the-windows-vista-send-to-menu/
 * Command line (Windows, Linux, Mac): `java -jar bds-ui-<version>.one-jar.jar`
 

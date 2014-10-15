@@ -1,0 +1,170 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns2="http://FDSAPI.api.fds.biscom.com/types" xmlns:ns1="http://type.api.fds.biscom.com/xsd" xmlns:ns="http://FDSAPI.api.fds.biscom.com" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns0="http://FDSAPI.api.fds.biscom.com/types" xmlns:stn_12="http://io.java/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://FDSAPI.api.fds.biscom.com">
+    <wsdl:documentation>FDSAPIBIN</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:types="http://FDSAPI.api.fds.biscom.com/types" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://FDSAPI.api.fds.biscom.com/types">
+            <xs:import namespace="http://type.api.fds.biscom.com/xsd"/>
+            <xs:import namespace="http://io.java/xsd"/>
+            <xs:element name="addDataFile" type="ns1:XSAddDataFileInput"/>
+            <xs:element name="addDataFileResponse" type="ns1:XSAddDataFileOutput"/>
+            <xs:element name="updateDataFileUpload" type="ns1:XSUpdateDataFileUploadInput"/>
+            <xs:element name="updateDataFileUploadResponse" type="ns1:XSUpdateDataFileUploadOutput"/>
+            <xs:element name="getDataFileChunkIS" type="ns1:XSGetDataFileChunkISInput"/>
+            <xs:element name="getDataFileChunkISResponse" type="ns1:XSGetDataFileChunkISOutput"/>
+        </xs:schema>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://type.api.fds.biscom.com/xsd">
+            <xs:import namespace="http://io.java/xsd"/>
+            <xs:complexType name="XSAddDataFileInput">
+                <xs:sequence>
+                    <xs:element name="inputStream" nillable="true" type="xs:base64Binary"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSAddDataFileOutput">
+                <xs:sequence>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSUpdateDataFileUploadInput">
+                <xs:sequence>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                    <xs:element name="offset" nillable="true" type="xs:long"/>
+                    <xs:element name="length" nillable="true" type="xs:int"/>
+                    <xs:element name="sourceIS" nillable="true" type="xs:base64Binary"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSUpdateDataFileUploadOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDataFileChunkISInput">
+                <xs:sequence>
+                    <xs:element name="dataFileId" nillable="true" type="xs:int"/>
+                    <xs:element name="referenceDocumentId" nillable="true" type="xs:int"/>
+                    <xs:element name="referenceDocumentType" nillable="true" type="xs:int"/>
+                    <xs:element name="offset" nillable="true" type="xs:long"/>
+                    <xs:element name="chunkSize" nillable="true" type="xs:int"/>
+                    <xs:element name="checksumFlag" nillable="true" type="xs:boolean"/>
+                    <xs:element name="sessionId" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="XSGetDataFileChunkISOutput">
+                <xs:sequence>
+                    <xs:element name="returnCode" nillable="true" type="xs:int"/>
+                    <xs:element name="inputStream" nillable="true" type="xs:base64Binary"/>
+                    <xs:element name="bytesRead" nillable="true" type="xs:int"/>
+                    <xs:element name="checksum" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="iwscRequest"/>
+    <wsdl:message name="iwscResponse"/>
+    <wsdl:message name="updateDataFileUploadMessage">
+        <wsdl:part name="part1" element="ns2:updateDataFileUpload"/>
+    </wsdl:message>
+    <wsdl:message name="updateDataFileUploadResponseMessage">
+        <wsdl:part name="part1" element="ns2:updateDataFileUploadResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getDataFileChunkISMessage">
+        <wsdl:part name="part1" element="ns2:getDataFileChunkIS"/>
+    </wsdl:message>
+    <wsdl:message name="getDataFileChunkISResponseMessage">
+        <wsdl:part name="part1" element="ns2:getDataFileChunkISResponse"/>
+    </wsdl:message>
+    <wsdl:message name="addDataFileMessage">
+        <wsdl:part name="part1" element="ns2:addDataFile"/>
+    </wsdl:message>
+    <wsdl:message name="addDataFileResponseMessage">
+        <wsdl:part name="part1" element="ns2:addDataFileResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="FDSAPIBINPortType">
+    <!--
+        <wsdl:operation name="iwsc">
+            <wsdl:input message="ns:iwscRequest" wsaw:Action="urn:iwsc"/>
+            <wsdl:output message="ns:iwscResponse" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/iwscResponse"/>
+        </wsdl:operation>
+        -->
+        <wsdl:operation name="updateDataFileUpload">
+            <wsdl:input message="ns:updateDataFileUploadMessage" wsaw:Action="urn:updateDataFileUpload"/>
+            <wsdl:output message="ns:updateDataFileUploadResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/updateDataFileUploadResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getDataFileChunkIS">
+            <wsdl:input message="ns:getDataFileChunkISMessage" wsaw:Action="urn:getDataFileChunkIS"/>
+            <wsdl:output message="ns:getDataFileChunkISResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/getDataFileChunkISResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="addDataFile">
+            <wsdl:input message="ns:addDataFileMessage" wsaw:Action="urn:addDataFile"/>
+            <wsdl:output message="ns:addDataFileResponseMessage" wsaw:Action="http://FDSAPI.api.fds.biscom.com/FDSAPIImplPortType/addDataFileResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="FDSAPIBINSOAP11Binding" type="ns:FDSAPIBINPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="updateDataFileUpload">
+            <soap:operation soapAction="urn:updateDataFileUpload" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDataFileChunkIS">
+            <soap:operation soapAction="urn:getDataFileChunkIS" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addDataFile">
+            <soap:operation soapAction="urn:addDataFile" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="FDSAPIBINSOAP12Binding" type="ns:FDSAPIBINPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="updateDataFileUpload">
+            <soap12:operation soapAction="urn:updateDataFileUpload" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getDataFileChunkIS">
+            <soap12:operation soapAction="urn:getDataFileChunkIS" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="addDataFile">
+            <soap12:operation soapAction="urn:addDataFile" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="FDSAPIBIN">
+        <wsdl:port name="FDSAPIBINSOAP11port_http" binding="ns:FDSAPIBINSOAP11Binding">
+            <soap:address location="http://fileshare.sungard.com:8080/axis2/services/FDSAPIBIN.FDSAPIBINSOAP11port_http/"/>
+        </wsdl:port>
+        <wsdl:port name="FDSAPIBINSOAP12port_http" binding="ns:FDSAPIBINSOAP12Binding">
+            <soap12:address location="http://fileshare.sungard.com:8080/axis2/services/FDSAPIBIN.FDSAPIBINSOAP12port_http/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
