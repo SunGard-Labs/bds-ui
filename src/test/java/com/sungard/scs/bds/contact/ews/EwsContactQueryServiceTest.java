@@ -8,9 +8,11 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import com.sungard.scs.bds.contact.Contact;
 
+@Ignore
 public class EwsContactQueryServiceTest {
 
 	private EwsContactQueryService ewsContactQueryService;

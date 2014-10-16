@@ -2,17 +2,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sungard.scs</groupId>
 	<artifactId>bds-ui</artifactId>
-	<version>1.4.3-SNAPSHOT</version>
+	<version>1.5.0-SNAPSHOT</version>
 
 	<properties>
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 	</properties>
 
 	<scm>
-		<connection>scm:git:https://github.com/derjust/bds-ui.git</connection>
-		<url>scm:git:https://github.com/derjust/bds-ui.git</url>
-		<developerConnection>scm:git:https://github.com/derjust/bds-ui.git</developerConnection>
-	  <tag>bds-ui-1.3.0</tag>
+		<connection>scm:git:https://github.com/SunGard-Labs/bds-ui.git</connection>
+		<url>scm:git:https://github.com/SunGard-Labs/bds-ui.git</url>
+		<developerConnection>scm:git:https://github.com/SunGard-Labs/bds-ui.git</developerConnection>
   </scm>
 	<distributionManagement>
 		<repository>
