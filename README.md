@@ -63,5 +63,5 @@ It should work in Eclipse with no m2e lifecycle hack. `jaxws-maven-plugin` is M2
 ## How to release
 Nothing fancy
 ```
-mvn release:prepare release:perform
+mvn -DingnoreSnapshots=true release:prepare release:perform
 ```
