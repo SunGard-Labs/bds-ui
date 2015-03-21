@@ -48,12 +48,8 @@ import org.jdesktop.application.Action;
 import org.jdesktop.application.FrameView;
 import org.jdesktop.application.SingleFrameApplication;
 import org.jdesktop.application.Task;
-import org.jdesktop.application.TaskEvent;
-import org.jdesktop.application.TaskListener;
 
 import com.sungard.scs.bds.FDSAPIWrapper.HashAlgorithm;
-import com.sungard.scs.bds.contact.Contact;
-import com.sungard.scs.bds.contact.ContactQueryTask;
 
 public class BdsApplication extends SingleFrameApplication {
 	private static final Logger LOGGER = Logger.getLogger(BdsApplication.class.getName());
@@ -119,6 +115,12 @@ public class BdsApplication extends SingleFrameApplication {
 		if ("".equals(txtUrl.getText())) {
 			String url = getContext().getResourceMap().getString("url", new Object[0]);
 			txtUrl.setText(url);
+		}
+		
+		JTextField txtContactUrl = (JTextField) getComponentByName("contactUrl");
+		if ("".equals(txtContactUrl.getText())) {
+			String url = getContext().getResourceMap().getString("contactUrl", new Object[0]);
+			txtContactUrl.setText(url);
 		}
 
 		JTextField txtProxyHost = (JTextField) getComponentByName("proxyHost");
@@ -346,7 +348,9 @@ public class BdsApplication extends SingleFrameApplication {
 		String s = d.getEmail();
 		
 		if (s != null && s.length() > 0) {
-			tos.add(s);
+			for(String to : s.split(";")) {
+				tos.add(to.trim());
+			}
 			
 			JTable toTable = getComponentByName("toTable");
 			((AbstractTableModel) toTable.getModel()).fireTableDataChanged();
@@ -478,45 +482,18 @@ public class BdsApplication extends SingleFrameApplication {
 		}
 	}
 	
-	
-	@Action(block = Task.BlockingScope.APPLICATION)
-	public Task<List<Contact>, Void> searchEmail(final ActionEvent e) {
-		return executeNetworkOperation(new NetworkOperation<Task<List<Contact>, Void>>() {
-			@Override
-			public Task<List<Contact>, Void> execute(String url, String username, String password) {
-				String contactToFind = ((JTextField)e.getSource()).getText();
-				if (contactToFind == null || contactToFind.length() == 0) {
-					//TODO translation
-					JOptionPane.showMessageDialog(getMainFrame(), "Please input a name", "Please input a name", JOptionPane.ERROR_MESSAGE);
-					return null;
-				} else {
-					ContactQueryTask task = new ContactQueryTask(getInstance(), url, username, password, contactToFind);
-					task.addTaskListener(new TaskListener.Adapter<List<Contact>, Void>() {
-
-						@Override
-						public void succeeded(TaskEvent<List<Contact>> event) {
-							List<Contact> contacts = event.getValue();
-							System.out.println(contacts);
-						}
-
-						@Override
-						public void failed(TaskEvent<Throwable> event) {
-							Throwable t = event.getValue();
-							LOGGER.log(Level.WARNING, "Fetching contacts failed: " + t.getMessage(), t);
-							JOptionPane.showMessageDialog(getMainFrame(), t.getMessage(), "Fetching contacts failed", JOptionPane.WARNING_MESSAGE);
-						}
-					});
-					return task;
-				}
-			}
-
-		});
-
-		
+	public enum ConnectionType {
+		Exchange,
+		BDS
 	}
 	
-	private <T> T executeNetworkOperation(NetworkOperation<T> op) {
-		String url = ((JTextField) getComponentByName("url")).getText();
+	public <T> T executeNetworkOperation(NetworkOperation<T> op, ConnectionType type) {
+		String url;
+		if (type == ConnectionType.BDS) {
+			url = ((JTextField) getComponentByName("url")).getText();
+		} else {
+			url = ((JTextField) getComponentByName("contactUrl")).getText();
+		}
 		boolean valid = true;
 		valid &= verifyStringNotEmpty(url, "urlMissing", new Object[0]);
 		String username = ((JTextField) getComponentByName("username")).getText();
@@ -568,7 +545,7 @@ public class BdsApplication extends SingleFrameApplication {
 						});
 				return null;
 			}
-		});
+		}, ConnectionType.BDS);
 	}
 
 	private <T extends Component> T getComponentByName(String name) {
@@ -656,16 +633,29 @@ public class BdsApplication extends SingleFrameApplication {
 
 		JLabel lblUrl = new JLabel("URL:");
 		p.add(lblUrl, bgc);
+		JPanel urlPanel = new JPanel();
+		urlPanel.setLayout(new GridBagLayout());
 
 		bgc.gridx = 1;
 		bgc.gridy = 0;
 		bgc.fill = GridBagConstraints.HORIZONTAL;
 		bgc.weightx = 1.0D;
 		bgc.gridwidth = 2;
+		p.add(urlPanel, bgc);
+		
+		GridBagConstraints innerBgc = new GridBagConstraints();
+		innerBgc.fill = GridBagConstraints.HORIZONTAL;
+		innerBgc.weightx = 1.0D;
 		JTextField txtUrl = new JTextField();
 		txtUrl.setName("url");
-		p.add(txtUrl, bgc);
-
+		txtUrl.setToolTipText("BDS service like 'https://fileshare.domain.tld/axis2/services/'");
+		urlPanel.add(txtUrl, innerBgc);
+		
+		JTextField txtContactUrl = new JTextField();
+		txtContactUrl.setName("contactUrl");
+		txtContactUrl.setToolTipText("Exchange OWA like 'https://owa.domain.tld/EWS/Exchange.asmx'");
+		urlPanel.add(txtContactUrl, innerBgc);
+		
 		bgc.gridx = 3;
 		bgc.fill = GridBagConstraints.HORIZONTAL;
 		bgc.weightx = 1.0D;

@@ -57,7 +57,12 @@ public class ContactImpl implements Contact {
 
 	@Override
 	public String toString() {
-		return "ContactImpl [address=" + address + ", name=" + name + "]";
+		return name + "<" + address + ">";
+	}
+
+	@Override
+	public int compareTo(Contact o) {
+		return this.name.compareTo(o.getName());
 	}
 
 }
