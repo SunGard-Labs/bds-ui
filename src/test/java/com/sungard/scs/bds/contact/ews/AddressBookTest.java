@@ -1,4 +1,4 @@
-package com.sungard.scs.bds;
+package com.sungard.scs.bds.contact.ews;
 
 import java.net.URI;
 
