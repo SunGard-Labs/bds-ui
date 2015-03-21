@@ -11,20 +11,32 @@ import microsoft.exchange.webservices.data.FindItemsResults;
 import microsoft.exchange.webservices.data.Item;
 import microsoft.exchange.webservices.data.ItemSchema;
 import microsoft.exchange.webservices.data.ItemView;
-import microsoft.exchange.webservices.data.LogicalOperator;
 import microsoft.exchange.webservices.data.SearchFilter;
 import microsoft.exchange.webservices.data.WebCredentials;
 import microsoft.exchange.webservices.data.WellKnownFolderName;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.Ignore;
 
 @Ignore
 public class AddressBookTest {
 
+	private ExchangeService service;
+
+	@Before
+	public void setUp() {
+		service = new ExchangeService(ExchangeVersion.Exchange2010);		
+	}
+	
+	@After
+	public void tearDown() {
+		service.close();
+	}
+	
 	@Test
 	public void testAddressBookAccess() throws Exception {
-		ExchangeService service = new ExchangeService(ExchangeVersion.Exchange2010);
 
 		ExchangeCredentials credentials = new WebCredentials("Username", "Password");
 		service.setCredentials(credentials);
