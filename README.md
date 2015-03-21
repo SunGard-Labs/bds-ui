@@ -45,10 +45,9 @@ Execute the `bds-ui-<version>.one-jar.jar` as JAR.
 
 ## How to build
 
-You have to use JDK7/JRE7 due to https://java.net/jira/browse/JAX_WS_COMMONS-129
+`mvn package` - easy, huh?!
 
-As EWS is not available via a public repository. Follow https://github.com/OfficeDev/ews-java-api/issues/1 for details.
-For the time being, ``clone`` https://github.com/OfficeDev/ews-java-api and ``mvn install`` it.
+Compatible with JDK 1.7 and 1.8.
 
 ### Pure
 Maven is the primary build platform - therefore the following should always work.
